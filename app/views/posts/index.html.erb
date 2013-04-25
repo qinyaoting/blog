@@ -1,0 +1,58 @@
+<h1>Listing posts</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Title</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @posts.each do |post| %>
+  <tr>
+  <td><%= post.name %></td>
+    <td><%= post.title %></td>
+    <td><%= post.content %></td>
+
+
+    <td><%= link_to 'Show', post %></td>
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <td><%= link_to 'Destroy', post, method: :delete, :remote => true, data: { confirm: 'Are you sure?' } %></td>
+    <!--
+    :remote => true, 告诉rails, 该表单将使用xmlhttprequest方式提交数据. YYY -->
+
+
+  </tr>
+<% end %>
+</table>
+<%= paginate @posts %>
+<br />
+
+<%= link_to 'New Post', new_post_path %>
+
+
+<!-- 3
+      link_to
+      'Show' post  --  http://localhost:3000/posts/1
+      'Edit' edit_post_path(post) --  http://localhost:3000/posts/1/edit
+      'Destroy'  post -- http://localhost:3000/posts/1
+-- >
+
+<!-- 4
+     先前版本的rails中你可能需要使用 %= h post.name % 来实现HTML转义，那么在3.0中，默认就已经是转义的了，
+     如果你需要获得未转义的HTML，你需要这样写 %= raw post.name %
+-- >
+
+<!-- 5
+    用脚手架生成的 在routes.rb 里
+    resources :posts
+
+ -->
+
+<hr />
+1 post  ok                 <br />
+2 comment ok               <br />
+3 tag                      <br />
+4 分页  ok                  <br />

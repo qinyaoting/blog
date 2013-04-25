@@ -1,0 +1,16 @@
+<p>
+  <b>Commenter:</b>
+  <%= comment.commenter %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= comment.body %>
+</p>
+
+
+<%= link_to 'Destroy', [comment.post, comment], confirm: 'Are you sure?', method: :delete  %>
+
+<!--
+link_to 生成的url: posts/:id/comments/:id, 以及产生一个delete请求
+link_to '删除', [comment.post, comment], confirm: 'Are you sure?', method: :delete-->

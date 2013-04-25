@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @post.name %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @post.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @post.content %>
+</p>
+
+
+<hr />
+<p>
+  <b>Tags:</b>
+  <%= @post.tags.map { |t| t.name }.join(", ") %>
+</p>
+
+<hr />
+<h2>Comments (使用局部模板显示评论)</h2>
+<!--
+render 方法的参数是一个集合 (%= render @post.comments %), rails会自动判断参数是否是集合,
+如果是, 将遍历集合同时输出局部模板     -->
+<div id="comments">
+    <%= render @post.comments %>
+</div>
+<hr />
+<h2>Add a comment: (使用局部模板显示评论表单)</h2>
+<%= render "comments/form" %>
+<hr />
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

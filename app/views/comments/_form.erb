@@ -1,0 +1,20 @@
+<%= form_for([@post, @post.comments.build], :remote=>true) do |f| %>
+    <div class="field">
+      <%= f.label :commenter %>
+      <%= f.text_field :commenter %>
+    </div>
+    <div class="field">
+      <%= f.label :body %>
+      <%= f.text_area :body %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
+
+<!--
+    :remote=>true告诉rails, 该表单将使用xmlhttprequest方式提交数据.     YYY
+-->
+
+<!--
+form_for [@post, @post.comments.build] 方法生成表单的action为: posts/:id/comment,-->
